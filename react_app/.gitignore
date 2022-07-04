@@ -23,5 +23,5 @@ yarn-debug.log*
 yarn-error.log*
 
 # 내가 추가한 것
-.package-lock
-.package
+.package-lock.json
+.package.json
