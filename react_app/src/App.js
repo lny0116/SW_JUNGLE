@@ -6,7 +6,7 @@ function Header(props){
   return <header>
   <h1><a href='/' onClick={(event)=>{ // === function(event){}
     event.preventDefault(); // 처음에 그냥 눌리면 클릭 이벤트 발생하지 않게 
-    props.onChangeMode(); // 누르면 alert 띄우는 이벤트 발생 시키는 함수
+    props.onChangeMode();
   }
   }>{props.title}</a></h1>
 </header>
@@ -16,7 +16,7 @@ function Nav(props){
   const lis = []
   for (let i = 0; i<props.topics.length; i++){
     let t = props.topics[i];
-    lis.push(<li key={t.id}><a id={t.id} href={"/read/" + t.id} onClick={(event)=>{
+    lis.push(<li key={t.id}><a id={t.id} href={`/read/${t.id}`} onClick={(event)=>{
       event.preventDefault();
       props.onChangeMode(Number(event.target.id));
       //내부의 onChangeMode를 호출하는 것이니까 props를 이용해 호출하는 것
