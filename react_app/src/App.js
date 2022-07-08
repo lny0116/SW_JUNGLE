@@ -38,6 +38,14 @@ function Article(props){
 }
 
 function App() {
+  const [count, setCount] = useState(0);
+  const [email, setEmail] = useState('');
+  const updateEmail = (event)=>{
+    const {
+      target: {value}
+    } = event;
+    setEmail(value);
+  }
   const [mode, setMode] = useState('Welcome');
   const [id, setId] = useState(null);
   const topics = [
@@ -61,6 +69,10 @@ function App() {
   }
   return (
     <div>
+      <input placeholder='email input plz' value={email} onChange={updateEmail}/>
+      {count}
+      <button onClick={()=>setCount(count+1)}>좋아요</button>
+      <button onClick={()=>setCount(count-1)}>싫어요</button>
       <Header title="Web" onChangeMode={()=>{ // === function(){}
         setMode('Welcome');
       }}>
