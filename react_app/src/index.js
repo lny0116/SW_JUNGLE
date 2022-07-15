@@ -6,7 +6,8 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 // import App from './PracticeAxios';
 // import App from './220714';
-import App from './220714_1';
+// import App from './220714_1';
+import App from './220715';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
