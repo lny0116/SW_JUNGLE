@@ -1,89 +1,71 @@
 import logo from './logo.svg';
 import './App.css';
-import {useState} from "react";
+import {useState,useRef} from "react";
 
-function Header(props){
-  return <header>
-  <h1><a href='/' onClick={(event)=>{ // === function(event){}
-    event.preventDefault(); // 처음에 그냥 눌리면 클릭 이벤트 발생하지 않게 
-    props.onChangeMode();
-  }
-  }>{props.title}</a></h1>
-</header>
+function BookName(){
+  return <div className='BookListItem'>book name</div>
 }
 
-function Nav(props){
-  const lis = []
-  for (let i = 0; i<props.topics.length; i++){
-    let t = props.topics[i];
-    lis.push(<li key={t.id}><a id={t.id} href={`/read/${t.id}`} onClick={(event)=>{
-      event.preventDefault();
-      props.onChangeMode(Number(event.target.id));
-      //내부의 onChangeMode를 호출하는 것이니까 props를 이용해 호출하는 것
-      //event.target이라는 것은 이벤트를 발생시킨 타겟을 말하는 건데, 이는 <a>태그를 말하는 것임
-    }}>{t.title}</a></li>)
-  }
-  return <nav>
-  <ol>
-    {lis}
-  </ol>
-</nav>
+function Grass(){
+  // const squares = document.querySelector('.squares');
+  // for (let i = 1; i < 365; i++) {
+  //   const level = Math.floor(Math.random() * 3);  
+  //   squares.insertAdjacentHTML('beforeend', `<li data-level="${level}"></li>`);
+  // }
+  return <div className="graph">
+  <ul className="months">
+    <li>Jan</li>
+    <li>Feb</li>
+    <li>Mar</li>
+    <li>Apr</li>
+    <li>May</li>
+    <li>Jun</li>
+    <li>Jul</li>
+    <li>Aug</li>
+    <li>Sep</li>
+    <li>Oct</li>
+    <li>Nov</li>
+    <li>Dec</li>
+  </ul>
+  <ul className="days">
+    <li>Sun</li>
+    <li>Mon</li>
+    <li>Tue</li>
+    <li>Wed</li>
+    <li>Thu</li>
+    <li>Fri</li>
+    <li>Sat</li>
+  </ul>
+  <ul className="squares">
+  </ul>
+</div>
 }
 
-function Article(props){
-  return <article>
-  <h2>{props.title}</h2>
-  {props.body}
-</article>
-}
-
-function App() {
-  const [count, setCount] = useState(0);
-  const [email, setEmail] = useState('');
-  const updateEmail = (event)=>{
-    const {
-      target: {value}
-    } = event;
-    setEmail(value);
-  }
-  const [mode, setMode] = useState('Welcome');
-  const [id, setId] = useState(null);
-  const topics = [
-    {id:1, title:'html', body:'html is ...!'},
-    {id:2, title:'css', body:'css is ...!'},
-    {id:3, title:'JS', body:'JS is ...!'},
-  ]
-  let content = null;
-  if (mode === 'Welcome'){
-    content = <Article title="Welcome" body="hi, react~ my name is lena!"></Article>
-  } else if (mode === 'Read'){
-    let title, body = null;
-    for (let i = 0; i<topics.length; i++){
-      // console.log(topics[i].id, id);
-      if (topics[i].id === id){
-        title = topics[i].title;
-        body = topics[i].body;
-      }
-    }
-    content = <Article title={title} body={body}></Article>
-  }
+function App(){
   return (
-    <div>
-      <input placeholder='email input plz' value={email} onChange={updateEmail}/>
-      {count}
-      <button onClick={()=>setCount(count+1)}>좋아요</button>
-      <button onClick={()=>setCount(count-1)}>싫어요</button>
-      <Header title="Web" onChangeMode={()=>{ // === function(){}
-        setMode('Welcome');
-      }}>
-      </Header>
-      <Nav topics={topics} onChangeMode={(id)=>{
-        setMode('Read');
-        setId(id);
-      }}></Nav>
-      {content}
-    </div>
-  );
+    <>
+      <div className='Container'>
+        <img className='LogoImage' src='https://abrasive-wholesaler-263.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fa4dddbb9-2d7e-4ed2-9e58-23fc77b4d0d6%2FLabel_logo_full.png?table=block&id=e913a73d-d3cf-4969-99ef-ce8e920c82aa&spaceId=16cf1607-3cc0-4711-9ea0-019cf8edb4ca&width=1250&userId=&cache=v2'></img>
+        <h2 className='MyLibrary'>My Library</h2>
+      </div>
+      <div className='ProfileEditSection'>
+        <div className='ImageStack'>
+          <img className='ProfileImage' src='https://blog.kakaocdn.net/dn/ebWknC/btrGRkjOw9P/YfnxOV9URkIWxq1mOV8lRK/img.png'></img>
+          <img className='ProfileAddImage' src='https://blog.kakaocdn.net/dn/bYBb7H/btrGRkxnKTR/tgpJywvzqFKTgaCZklwms0/img.png'></img>
+        </div>
+      </div>
+      <div>
+        <h3 className='MyLibraryBlock'>My Library</h3>
+        <div className='BookList'>
+          <BookName></BookName><BookName></BookName>
+          <BookName></BookName><BookName></BookName>
+        </div>
+      </div>
+      <div>
+        <Grass></Grass>
+      </div>
+    </>
+  )
 }
 
 export default App;

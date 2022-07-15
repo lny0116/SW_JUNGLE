@@ -1,0 +1,160 @@
+.LogoImage{
+    width: 200px;
+    height: 50px;
+    object-fit: fill;
+};
+
+.MyLibrary{
+    position: absolute;
+    top: -100px;
+    right: 100px;
+}
+
+.MyLibraryBlock{
+    display: inline-flex;
+    margin: 8px;
+	padding: 2px 7px;
+	border: 1px solid currentColor;
+	border-radius: 3px;
+	font-weight: bold;
+	background: #EAEAEA;
+    text-align: center;
+}
+
+.Container{
+   display: inline-flex;
+   flex: 1 1 0;
+   flex-wrap: wrap;
+   align-items: center;
+   /* justify-content: space-around; */
+}
+
+.BookList{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 1.2em;
+    line-height: 1.4;
+    background: #ffffff;
+    /* flex-direction: column; */
+}
+
+.BookListItem {
+	margin: 3px;
+	padding: 2px;
+    flex: 1 1 40%;
+	border: 1px solid currentColor;
+	border-radius: 3px;
+	background: #EAEAEA;
+    text-align: center;
+}
+
+.ProfileEditSection{
+    display: flex;
+    flex-direction: column;
+}
+
+.ProfileImage{
+    width: 200px;
+
+}
+
+.ProfileAddImage{
+    width: min-content;
+    position: relative;
+    left: 143px;
+    bottom: 80px;
+}
+
+.ImageStack {
+    display: grid;
+    /* grid-template-columns: repeat(12, 1fr); */
+    position: relative;
+}
+
+/* Grass css */
+:root { /* css 변수 */
+    --square-size: 15px;
+    --square-gap: 5px;
+    --week-width: calc(var(--square-size) + var(--square-gap));
+}
+  
+.months {
+    grid-area: months;
+}
+.days {
+    grid-area: days;
+}
+.squares {
+    grid-area: squares;
+}
+
+.graph {
+    display: inline-grid;
+    grid-template-areas: "empty months"
+                        "days squares";
+    grid-template-columns: auto 1fr;
+    grid-gap: 10px;
+}
+
+.months {
+    display: grid;
+    grid-template-columns: calc(var(--week-width) * 4) /* Jan */
+                            calc(var(--week-width) * 4) /* Feb */
+                            calc(var(--week-width) * 4) /* Mar */
+                            calc(var(--week-width) * 5) /* Apr */
+                            calc(var(--week-width) * 4) /* May */
+                            calc(var(--week-width) * 4) /* Jun */
+                            calc(var(--week-width) * 5) /* Jul */
+                            calc(var(--week-width) * 4) /* Aug */
+                            calc(var(--week-width) * 4) /* Sep */
+                            calc(var(--week-width) * 5) /* Oct */
+                            calc(var(--week-width) * 4) /* Nov */
+                            calc(var(--week-width) * 5) /* Dec */;
+}
+
+.days,
+.squares {
+    display: grid;
+    grid-gap: var(--square-gap);
+    grid-template-rows: repeat(7, var(--square-size));
+}
+
+.squares {
+    grid-auto-flow: column;
+    grid-auto-columns: var(--square-size);
+}
+
+
+/* Other styling */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 12px;
+}
+
+.graph {
+    padding: 20px;
+    border: 1px #e1e4e8 solid;
+    margin: 20px;
+}
+
+.days li:nth-child(odd) {
+    visibility: hidden;
+}
+
+.squares li {
+    background-color: #ebedf0;
+}
+
+.squares li[data-level="1"] {
+    background-color: #c6e48b;
+}
+
+.squares li[data-level="2"] {
+    background-color: #7bc96f;
+}
+
+.squares li[data-level="3"] {
+    background-color: #196127;
+}
